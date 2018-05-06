@@ -5,8 +5,6 @@ registry:
     - 443:5000
   environment:
     REGISTRY_HTTP_HOST: ${HTTP_HOST}
-    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
-    REGISTRY_HTTP_TLS_KEY: /certs/domain.key
     REGISTRY_HTTP_TLS_LETSENCRYPT_CACHEFILE: ${LETSENCRYPT_CACHEFILE}
     REGISTRY_HTTP_TLS_LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
     REGISTRY_AUTH: htpasswd
@@ -15,5 +13,4 @@ registry:
   volumes:
     - "${REGISTRY_DIR}:/var/lib/registry"
     - "${AUTH_DIR}:/auth"
-    - "${CERTS_DIR}:/certs"
     - "${LETSENCRYPT_CACHEFILE_LOCAL}:${LETSENCRYPT_CACHEFILE}"
