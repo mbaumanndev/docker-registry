@@ -1,9 +1,8 @@
-registry:
+registry:  
   restart: always
   image: registry:2
   ports:
-    - 5000:5000
-    - 443:443
+    - 443:5000
   environment:
     REGISTRY_HTTP_HOST: ${HTTP_HOST}
     REGISTRY_HTTP_SECRET: ${HTTP_SECRET}
@@ -13,6 +12,6 @@ registry:
     REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
     REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
   volumes:
-    - "${REGISTRY_DIR}:/var/lib/registry"
-    - "${AUTH_DIR}:/auth"
-    - "${LETSENCRYPT_CACHEFILE_LOCAL}:${LETSENCRYPT_CACHEFILE}"
+    - ${REGISTRY_DIR}:/var/lib/registry
+    - ${AUTH_DIR}:/auth
+#    - ${LETSENCRYPT_CACHEFILE_LOCAL}:${LETSENCRYPT_CACHEFILE}
